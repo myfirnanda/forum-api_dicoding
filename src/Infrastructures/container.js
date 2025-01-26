@@ -56,30 +56,30 @@ container.register([
             ],
         },
     },
-    {
-        key: AuthenticationRepository.name,
-        Class: AuthenticationRepositoryPostgres,
-        parameter: {
-            injectType: 'destructuring',
-            dependencies: [
-                {
-                    concrete: pool,
-                },
-            ],
-        },
-    },
-    {
-        key: TokenManager.name,
-        Class: JwtTokenManager,
-        parameter: {
-            injectType: 'destructuring',
-            dependencies: [
-                {
-                    concrete: Jwt,
-                },
-            ],
-        },
-    },
+    // {
+    //     key: AuthenticationRepository.name,
+    //     Class: AuthenticationRepositoryPostgres,
+    //     parameter: {
+    //         injectType: 'destructuring',
+    //         dependencies: [
+    //             {
+    //                 concrete: pool,
+    //             },
+    //         ],
+    //     },
+    // },
+    // {
+    //     key: TokenManager.name,
+    //     Class: JwtTokenManager,
+    //     parameter: {
+    //         injectType: 'destructuring',
+    //         dependencies: [
+    //             {
+    //                 concrete: Jwt,
+    //             },
+    //         ],
+    //     },
+    // },
 ]);
 
 // registering use cases
@@ -101,61 +101,61 @@ container.register([
             ],
         },
     },
-    {
-        key: AddAuthenticationUseCase.name,
-        Class: AddAuthenticationUseCase,
-        parameter: {
-            injectType: 'destructuring',
-            dependencies: [
-                {
-                    name: 'userRepository',
-                    internal: UserRepository.name,
-                },
-                {
-                    name: 'authenticationRepository',
-                    internal: AuthenticationRepository.name,
-                },
-                {
-                    name: 'tokenManager',
-                    internal: TokenManager.name,
-                },
-                {
-                    name: 'passwordHash',
-                    internal: PasswordHash.name,
-                },
-            ],
-        },
-    },
-    {
-        key: DeleteAuthenticationUseCase.name,
-        Class: DeleteAuthenticationUseCase,
-        parameter: {
-            injectType: 'destructuring',
-            dependencies: [
-                {
-                    name: 'authenticationRepository',
-                    internal: AuthenticationRepository.name,
-                },
-            ],
-        },
-    },
-    {
-        key: RefreshAuthenticationUseCase.name,
-        Class: RefreshAuthenticationUseCase,
-        parameter: {
-            injectType: 'destructuring',
-            dependencies: [
-                {
-                    name: 'authenticationRepository',
-                    internal: AuthenticationRepository.name,
-                },
-                {
-                    name: 'tokenManager',
-                    internal: TokenManager.name,
-                },
-            ],
-        },
-    },
+    // {
+    //     key: AddAuthenticationUseCase.name,
+    //     Class: AddAuthenticationUseCase,
+    //     parameter: {
+    //         injectType: 'destructuring',
+    //         dependencies: [
+    //             {
+    //                 name: 'userRepository',
+    //                 internal: UserRepository.name,
+    //             },
+    //             {
+    //                 name: 'authenticationRepository',
+    //                 internal: AuthenticationRepository.name,
+    //             },
+    //             {
+    //                 name: 'tokenManager',
+    //                 internal: TokenManager.name,
+    //             },
+    //             {
+    //                 name: 'passwordHash',
+    //                 internal: PasswordHash.name,
+    //             },
+    //         ],
+    //     },
+    // },
+    // {
+    //     key: DeleteAuthenticationUseCase.name,
+    //     Class: DeleteAuthenticationUseCase,
+    //     parameter: {
+    //         injectType: 'destructuring',
+    //         dependencies: [
+    //             {
+    //                 name: 'authenticationRepository',
+    //                 internal: AuthenticationRepository.name,
+    //             },
+    //         ],
+    //     },
+    // },
+    // {
+    //     key: RefreshAuthenticationUseCase.name,
+    //     Class: RefreshAuthenticationUseCase,
+    //     parameter: {
+    //         injectType: 'destructuring',
+    //         dependencies: [
+    //             {
+    //                 name: 'authenticationRepository',
+    //                 internal: AuthenticationRepository.name,
+    //             },
+    //             {
+    //                 name: 'tokenManager',
+    //                 internal: TokenManager.name,
+    //             },
+    //         ],
+    //     },
+    // },
 ]);
 
 module.exports = container;

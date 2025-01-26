@@ -2,8 +2,8 @@ const pool = require("../src/Infrastructures/database/postgres/pool");
 
 const UsersTableTestHelper = {
     async addUser({
-        id = 'user-123',
-        username = 'dicoding',
+        id = `user-${Date.now()}`,
+        username = `user_${Date.now()}`,
         password = 'secret',
         fullname = 'Dicoding Indonesia',
     }) {
@@ -34,7 +34,7 @@ const UsersTableTestHelper = {
     },
 
     async cleanTable() {
-        await pool.query('TRUNCATE TABLE users');
+        await pool.query('TRUNCATE TABLE users RESTART IDENTITY CASCADE');
     },
 };
 

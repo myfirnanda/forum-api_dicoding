@@ -2,7 +2,7 @@ const pool = require("../src/Infrastructures/database/postgres/pool");
 
 const ThreadsTableTestHelper = {
     async addThread({
-        id = 'thread-hfH2hf3GNFsbcO38',
+        id = `thread-${Date.now()}`,
         title = 'hello',
         body = 'hrei',
     }) {
@@ -65,7 +65,7 @@ const ThreadsTableTestHelper = {
         }
     },
     async cleanTable() {
-        await pool.query('TRUNCATE TABLE threads');
+        await pool.query('TRUNCATE TABLE threads RESTART IDENTITY CASCADE');
     },
 };
 

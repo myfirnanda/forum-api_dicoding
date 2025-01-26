@@ -1,7 +1,11 @@
 const pool = require("../src/Infrastructures/database/postgres/pool");
 
 const CommentsTableTestHelper = {
-    async addComment({ id = 'comment-u34ih4i34oi34', content = 'sebuah comment', owner = 'user-IH89u9wuf98fFI'}) {
+    async addComment({
+        id = `comment-${Date.now()}`,
+        content = 'sebuah comment',
+        owner = 'user-IH89u9wuf98fFI'
+    }) {
         const query = {
             text: `
             INSERT INTO
@@ -23,7 +27,7 @@ const CommentsTableTestHelper = {
         await pool.query(query);
     },
     async cleanTable() {
-        await pool.query('TRUNCATE TABLE comments');
+        await pool.query('TRUNCATE TABLE comments RESTART IDENTITY CASCADE');
     },
 };
 
